@@ -85,13 +85,31 @@ int strStr(string haystack, string needle)
 //58
 int lengthOfLastWord(string s)
 {
-
+	if (s.empty())
+	{
+		return 0;
+	}
+	int nPos = s.find_last_of(' ');
+	while (nPos == s.length() - 1)
+	{
+		s = s.substr(0, nPos);
+		if (s.empty())
+		{
+			return 0;
+		}
+		nPos = s.find_last_of(' ');
+	}
+	if (nPos < 0)
+	{
+		return s.length();
+	}
+	return s.length() - nPos - 1;
 }
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	int nPos = strStr("mispsiss1ippi", "pi");
+	int nPos = lengthOfLastWord(" ");
 	return 0;
 }
 
